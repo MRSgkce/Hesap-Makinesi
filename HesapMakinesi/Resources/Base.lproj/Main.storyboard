@@ -267,22 +267,22 @@
                                 <color key="tintColor" name="AccentColor"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXQ-ci-LHS">
-                                <rect key="frame" x="252" y="287" width="125" height="56"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="202" y="291" width="312" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bhp-02-B2V" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7Ri-7a-jIl"/>
-                            <constraint firstItem="bhp-02-B2V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G4m-ES-WJn"/>
-                            <constraint firstItem="HXQ-ci-LHS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="252" id="MPd-OT-7q9"/>
-                            <constraint firstItem="HXQ-ci-LHS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="169" id="NhL-fE-xKa"/>
+                            <constraint firstItem="bhp-02-B2V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-8.5" id="G4m-ES-WJn"/>
+                            <constraint firstItem="HXQ-ci-LHS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="202" id="MPd-OT-7q9"/>
+                            <constraint firstItem="HXQ-ci-LHS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="NhL-fE-xKa"/>
                             <constraint firstItem="bhp-02-B2V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="248" id="ScP-8X-Yjh"/>
-                            <constraint firstItem="bhp-02-B2V" firstAttribute="top" secondItem="HXQ-ci-LHS" secondAttribute="bottom" constant="23" id="VQE-24-5nS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HXQ-ci-LHS" secondAttribute="trailing" constant="16" id="XMs-0t-piR"/>
+                            <constraint firstItem="bhp-02-B2V" firstAttribute="top" secondItem="HXQ-ci-LHS" secondAttribute="bottom" constant="20" id="VQE-24-5nS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HXQ-ci-LHS" secondAttribute="trailing" constant="-121" id="XMs-0t-piR"/>
                             <constraint firstItem="bhp-02-B2V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vyC-Hz-TYP"/>
                         </constraints>
                     </view>
@@ -299,9 +299,6 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
