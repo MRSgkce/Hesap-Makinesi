@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import UIKit
 
 enum Operation: Int {
     case divide = 10
@@ -16,76 +16,99 @@ enum Operation: Int {
     case add = 13
 }
 
-
-class CalculatorViewController : UIViewController {
-    var firstNumber: Double = 0
-    var currentOperation: Operation? = nil
-    var isTypingNumber = false
-
+class CalculatorViewController: UIViewController {
+    
     @IBOutlet weak var sonucLabel: UILabel!
+    
+    var firstNumber: Double?
+    var currentOperation: Operation?
+    var isTypingNumber = false
+    var expressionText = ""  // Tüm ifadenin gösterimi (8 × 5)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        sonucLabel.text = "0"
     }
-    
-    
+
     @IBAction func buttonTapped(_ sender: UIButton) {
         let tag = sender.tag
 
-        // 0-9 arası sayı butonları
+        // Sayı tuşları (0–9)
         if tag >= 0 && tag <= 9 {
             if isTypingNumber {
-                sonucLabel.text! += "\(tag)"
+                expressionText += "\(tag)"
             } else {
-                sonucLabel.text = "\(tag)"
+                if currentOperation == nil {
+                    expressionText = "\(tag)"
+                } else {
+                    expressionText += " \(tag)"
+                }
                 isTypingNumber = true
             }
+            sonucLabel.text = expressionText
             return
         }
 
-        // İşlem butonları (enum'dan kontrol)
+        // İşlem tuşları
         if let operation = Operation(rawValue: tag) {
-            if let text = sonucLabel.text, let number = Double(text) {
+            if let text = sonucLabel.text, let number = Double(text.components(separatedBy: " ").last ?? "") {
                 firstNumber = number
                 currentOperation = operation
+                expressionText += " \(symbolForOperation(operation))"
                 isTypingNumber = false
+                sonucLabel.text = expressionText
             }
             return
         }
 
-        // "=" butonu örneğin tag = 20
+        // "=" tuşu
         if tag == 19 {
-            if let operation = currentOperation,
-               let text = sonucLabel.text,
-               let secondNumber = Double(text) {
+            if let op = currentOperation,
+               let first = firstNumber,
+               let secondStr = expressionText.components(separatedBy: " ").last,
+               let second = Double(secondStr) {
 
                 var result: Double = 0
 
-                switch operation {
-                case .divide:
-                    result = firstNumber / secondNumber
-                case .multiply:
-                    result = firstNumber * secondNumber
-                case .subtract:
-                    result = firstNumber - secondNumber
-                case .add:
-                    result = firstNumber + secondNumber
+                switch op {
+                case .divide: result = first / second
+                case .multiply: result = first * second
+                case .subtract: result = first - second
+                case .add: result = first + second
                 }
 
-                sonucLabel.text = "\(result)"
-                isTypingNumber = false
+                sonucLabel.text = "\(result.cleanValue)"
+                expressionText = ""
+                firstNumber = nil
                 currentOperation = nil
+                isTypingNumber = false
             }
             return
         }
 
-        // "C" (clear) butonu örneğin tag = 99
+        // "C" tuşu (tag = 99)
         if tag == 99 {
             sonucLabel.text = "0"
-            firstNumber = 0
+            expressionText = ""
+            firstNumber = nil
             currentOperation = nil
             isTypingNumber = false
         }
     }
 
+    func symbolForOperation(_ op: Operation) -> String {
+        switch op {
+        case .add: return "+"
+        case .subtract: return "-"
+        case .multiply: return "×"
+        case .divide: return "÷"
+        }
+    }
+}
 
+extension Double {
+    var cleanValue: String {
+        return truncatingRemainder(dividingBy: 1) == 0 ?
+            String(Int(self)) : String(self)
+    }
 }
